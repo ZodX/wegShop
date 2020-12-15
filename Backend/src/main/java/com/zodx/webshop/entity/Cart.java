@@ -11,21 +11,32 @@ public class Cart {
     private Long id;
 
     @Column
-    private String product_id;
+    private Long product_id;
+
+    @Column
+    private Long user_id;
 
     public Long getId() {
         return id;
     }
 
-    public String getProduct_id() {
+    public Long getProduct_id() {
         return product_id;
+    }
+
+    public Long getUser_id() {
+        return user_id;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public void setProduct_id(String product_id) {
+    public void setProduct_id(Long product_id) {
         this.product_id = product_id;
+    }
+
+    public void setUser_id(Long user_id) {
+        this.user_id = user_id;
     }
 }

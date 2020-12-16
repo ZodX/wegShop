@@ -1,8 +1,7 @@
 package com.zodx.webshop.service;
 
 import com.zodx.webshop.entity.User;
-import com.zodx.webshop.error.UserAlreadyExistsException;
-import com.zodx.webshop.error.UserNotFoundException;
+import com.zodx.webshop.error.*;
 import com.zodx.webshop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,5 +31,17 @@ public class UserService {
             }
         }
         userRepository.save(newUser);
+    }
+
+    public void modifyUser(Long id, User modifiedUser) {
+        if (modifiedUser.getId() < 1) {
+            throw new IdMinimumReachedException(id);
+        }
+        userRepository.findById(id)
+                .map(x -> {
+                    x.setName(modifiedUser.getName());
+                    x.setPassword(modifiedUser.getPassword());
+                    return userRepository.save(x);
+                }).orElseThrow(() -> new UserNotFoundException(id));
     }
 }

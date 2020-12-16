@@ -1,5 +1,6 @@
 package com.zodx.webshop.controller;
 
+import com.zodx.webshop.entity.Product;
 import com.zodx.webshop.entity.User;
 import com.zodx.webshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,12 @@ public class UserController {
             @RequestBody
             User newUser) {
         userService.addUser(newUser);
+    }
+
+    @PutMapping("/modify/{id}")
+    void modifyUser(
+            @PathVariable Long id,
+            @RequestBody User modifiedUser) {
+        userService.modifyUser(id, modifiedUser);
     }
 }

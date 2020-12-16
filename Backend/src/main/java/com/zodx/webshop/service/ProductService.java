@@ -1,9 +1,11 @@
 package com.zodx.webshop.service;
 
+import com.zodx.webshop.entity.Cart;
 import com.zodx.webshop.entity.Product;
 import com.zodx.webshop.error.ProductAlreadyExistsException;
 import com.zodx.webshop.error.ProductNotFoundException;
 import com.zodx.webshop.error.QuantityMinimumReachedException;
+import com.zodx.webshop.repository.CartRepository;
 import com.zodx.webshop.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,8 +19,11 @@ public class ProductService {
     @Autowired
     ProductRepository productRepository;
 
+    @Autowired
+    CartRepository cartRepository;
+
     public List<Product> getAllProducts() {
-        return new ArrayList<Product>(productRepository.findAll());
+        return new ArrayList<>(productRepository.findAll());
     }
 
     public Product getProductById(Long id) {
@@ -37,9 +42,18 @@ public class ProductService {
 
     public void deleteProduct(Long id) {
         List<Product> products = getAllProducts();
+        List<Cart> carts = new ArrayList<>(cartRepository.findAll());
+
         for (Product product : products) {
             if (product.getId().equals(id)) {
                 productRepository.deleteById(id);
+
+                for (Cart cart : carts) {
+                    if (cart.getProduct_id().equals(id)) {
+                        cartRepository.deleteById(cart.getId());
+                    }
+                }
+
                 break;
             }
             throw new ProductNotFoundException(id);

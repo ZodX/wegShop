@@ -41,9 +41,6 @@ public class CartController {
     void deleteCart(
             @PathVariable Long user_id,
             @PathVariable Long product_id){
-        //Long user_id = Long.parseLong(ids.substring(0, ids.indexOf("-")));
-        //Long product_id = Long.parseLong(ids.substring(ids.indexOf("-"), ids.length()));
-
         cartService.deleteCartItem(user_id, product_id);
     }
 }

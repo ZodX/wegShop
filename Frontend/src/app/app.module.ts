@@ -9,9 +9,9 @@ import {FormsModule} from "@angular/forms";
 import { MainComponent } from './main/main.component';
 import { LogoutComponent } from './logout/logout.component';
 import { MenuComponent } from './menu/menu.component';
-import { ProductsholderComponent } from './productsholder/productsholder.component';
-import { ProductsComponent } from './products/products.component';
-import { ProductComponent } from './product/product.component';
+import { ProductsholderComponent } from './components/product/productsholder/productsholder.component';
+import { ProductsComponent } from './components/product/products/products.component';
+import { ProductComponent } from './components/product/product/product.component';
 
 @NgModule({
   declarations: [

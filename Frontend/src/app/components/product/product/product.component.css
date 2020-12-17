@@ -13,14 +13,14 @@
 .fill {
     background-size: cover;
     background-position: center;
-    background-image: url('../../assets/img/product_pictogram.jpg');
+    background-image: url('src/assets/img/product_pictogram.jpg');
 }
 
 .card-body {
     height: 50%;
 }
 
-.card-body > * { 
+.card-body > * {
     margin: 0;
 }
 

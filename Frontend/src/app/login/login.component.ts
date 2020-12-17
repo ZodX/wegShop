@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
   handleLogin() {
     console.log("LOGIN HANDLING");
     this.authenticationService.authenticationService(this.username, this.password).subscribe(() => {

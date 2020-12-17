@@ -1,0 +1,9 @@
+<app-menu></app-menu>
+<div *ngIf="authenticationService.isUserLoggedIn(); else elseBlock">
+  <p>main works!</p>
+</div>
+<ng-template #elseBlock>
+  <app-notloggedin></app-notloggedin>
+</ng-template>
+
+

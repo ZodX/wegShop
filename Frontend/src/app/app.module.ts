@@ -9,6 +9,9 @@ import {FormsModule} from "@angular/forms";
 import { MainComponent } from './main/main.component';
 import { LogoutComponent } from './logout/logout.component';
 import { MenuComponent } from './menu/menu.component';
+import { ProductsholderComponent } from './productsholder/productsholder.component';
+import { ProductsComponent } from './products/products.component';
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { MenuComponent } from './menu/menu.component';
     LoginComponent,
     MainComponent,
     LogoutComponent,
-    MenuComponent
+    MenuComponent,
+    ProductsholderComponent,
+    ProductsComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,

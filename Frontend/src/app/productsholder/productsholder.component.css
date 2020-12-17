@@ -1,0 +1,11 @@
+.my-container {
+    border: thin solid red;
+    height: 93vh;
+}
+
+.container {
+    border: thin solid red;
+    max-width: 100vw;
+    padding-left: 7.5vw;
+    height: 100%;
+}

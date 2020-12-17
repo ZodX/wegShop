@@ -1,50 +1,14 @@
 <div class="my-container my-flex">
     <div class="container overflow-auto">
         <div class="row">
-            <div class="col-sm">
-                <app-product></app-product>
-            </div>
-            <div class="col-sm">
-                <app-product></app-product>
-            </div>
-            <div class="col-sm">
-                <app-product></app-product>
-            </div>
-            <div class="col-sm">
-                <app-product></app-product>
+            <div *ngFor="let product of products" class="col-sm">
+                <app-product
+                  [name]="product.name"
+                  [description]="product.description"
+                  [price]="product.price"
+                  [quantity]="product.quantity"
+                  [id]="product.id"></app-product>
             </div>
         </div>
-        <div class="ph"></div>
-        <div class="row">
-            <div class="col-sm">
-                <app-product></app-product>
-            </div>
-            <div class="col-sm">
-                <app-product></app-product>
-            </div>
-            <div class="col-sm">
-                <app-product></app-product>
-            </div>
-            <div class="col-sm">
-                <app-product></app-product>
-            </div>
-        </div>
-        <div class="ph"></div>
-        <div class="row">
-            <div class="col-sm">
-                <app-product></app-product>
-            </div>
-            <div class="col-sm">
-                <app-product></app-product>
-            </div>
-            <div class="col-sm">
-                <app-product></app-product>
-            </div>
-            <div class="col-sm">
-                <app-product></app-product>
-            </div>
-        </div>
-
-        <div *ngFor=""></div>
     </div>
 </div>

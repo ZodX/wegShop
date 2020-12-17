@@ -1,11 +1,51 @@
 .my-container {
-    border: thin solid red;
     height: 93vh;
 }
 
 .container {
-    border: thin solid red;
     max-width: 100vw;
     padding-left: 7.5vw;
     height: 100%;
+}
+
+.my-img-container {
+  border: thin solid rgba(0,0,0,.125);
+  height: 50%;
+  width: 100%;
+  display: flex;
+}
+
+.card {
+  width: 15vw;
+  height: 40vh;
+}
+
+.fill {
+  background-size: cover;
+  background-position: center;
+  background-image: url('src/assets/img/product_pictogram.jpg');
+}
+
+.card-body {
+  height: 50%;
+}
+
+.card-body > * {
+  margin: 0;
+}
+
+h5 {
+  height: 20%;
+}
+
+p {
+  height: 60%;
+}
+
+.my-btn-container {
+  height: 20%;
+}
+
+.btn {
+  margin: 0;
 }

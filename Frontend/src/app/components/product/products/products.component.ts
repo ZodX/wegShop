@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthenticationService} from "../../../login/authentication.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-products',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private authenticationService: AuthenticationService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+    if (!this.authenticationService.isUserLoggedIn()) {
+      this.router.navigate(['/']);
+    } else {
+      console.log("ey");
+    }
   }
 
 }

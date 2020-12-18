@@ -28,7 +28,6 @@ export class ProductsholderComponent implements OnInit {
     this.productService.productService().subscribe((result) => {
       this.products = result;
       this.rows = Math.floor(this.products.length/4) + 1;
-      console.log(this.rows);
       for (var i = 0; i < this.rows - 1; i++) {
         this.productRows.push([]);
       }
@@ -39,13 +38,10 @@ export class ProductsholderComponent implements OnInit {
         }
       }
 
-      console.log(this.productRows);
-
       var productRows = this.productRows;
       var c_row = 0;
       var c_col = 0;
       this.products.forEach(function (c_product) {
-        console.log(c_product);
         productRows[c_row][c_col] = c_product;
         if (c_col < 3) {
           c_col++;

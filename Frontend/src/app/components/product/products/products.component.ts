@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthenticationService} from "../../../login/authentication.service";
+import {AuthenticationService} from "../../authentication/login/authentication.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -17,8 +17,6 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
     if (!this.authenticationService.isUserLoggedIn()) {
       this.router.navigate(['/']);
-    } else {
-      console.log("ey");
     }
   }
 

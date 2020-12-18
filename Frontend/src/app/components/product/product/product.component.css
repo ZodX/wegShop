@@ -24,8 +24,38 @@
     margin: 0;
 }
 
+.titleRowContainer {
+    display: flex;
+    align-items: center;
+}
+
+.titleRowContainer * {
+    height: 100%;
+}
+
+.titleContainer {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.svgContainer {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+svg:hover {
+    cursor: pointer;
+}
+
 h5 {
     height: 20%;
+    margin: 0;
+    padding: 0;
 }
 
 p {

@@ -1,0 +1,23 @@
+.my-container {
+  height: 93vh;
+}
+
+.formContainer {
+  width: 30vw;
+}
+
+span {
+  width: 30%;
+}
+
+.dollarSpan {
+  width: auto;
+}
+
+textarea {
+  max-height: 50vh;
+}
+
+.btnContainer {
+  margin-top: 2vh;
+}

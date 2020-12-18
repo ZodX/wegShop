@@ -24,6 +24,10 @@ export class ProductsholderComponent implements OnInit {
     this.getProducts();
   }
 
+  handleAddPressed(): void {
+    this.router.navigate(['/add']);
+  }
+
   getProducts(): void {
     this.productService.productService().subscribe((result) => {
       this.products = result;

@@ -1,0 +1,28 @@
+<div class="my-container my-flex" *ngIf="product">
+  <div class="formContainer">
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Product name</span>
+      <input type="text" class="form-control" [(ngModel)]="product.name" placeholder="Type product name..." aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Price</span>
+      <input type="text" class="form-control" [(ngModel)]="product.price" placeholder="Type product price..." aria-label="Username" aria-describedby="basic-addon1">
+      <span class="input-group-text dollarSpan">$</span>
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Quantity</span>
+      <input type="text" class="form-control" [(ngModel)]="product.quantity" placeholder="Type product quantity..." aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+
+    <div class="input-group">
+      <span class="input-group-text">Description</span>
+      <textarea class="form-control" aria-label="With textarea" [(ngModel)]="product.description" placeholder="Type product description..."></textarea>
+    </div>
+
+    <div class="btnContainer my-flex">
+      <button (click)="handleAddDone()" class="btn btn-warning">Add product</button>
+    </div>
+  </div>
+</div>

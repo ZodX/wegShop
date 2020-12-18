@@ -1,8 +1,8 @@
 <div class="addBtnContainer my-flex">
-    <button class="btn btn-warning">Add Product</button>
+    <button (click)="handleAddPressed()" class="btn btn-warning">Add Product</button>
 </div>
 <div class="my-container my-flex">
-    
+
     <div class="container overflow-auto">
         <div *ngFor="let row of productRows" class="row">
             <div *ngFor="let product of row" class="col-sm">

@@ -1,6 +1,17 @@
+.addBtnContainer {
+  height: 7vh;
+}
+
+.btn {
+  margin: 0;
+}
+
 .my-container {
-    height: 93vh;
-    padding: 2vw;
+    height: 86vh;
+}
+
+.row {
+  padding: 2.5vw;
 }
 
 .container {

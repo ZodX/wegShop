@@ -40,12 +40,26 @@
 }
 
 .deleteSvgContainer:hover > .bi-x {
-    width: 25%;
+    width: 75%;
+}
+
+.cardContainer {
+    width: 16vw;
+    height: 41vh;
 }
 
 .card {
-    width: 15vw;
-    height: 40vh;
+    height: 95%;
+    width: 95%;
+    transition: .3s;
+}
+
+.card:hover {
+    height: 100%;
+    width: 100%;
+    -webkit-box-shadow: 0px 0px 40px -7px #3475d6;
+    -moz-box-shadow: 0px 0px 40px -7px #3475d6;
+    box-shadow: 0px 0px 40px -7px #3475d6;
 }
 
 .fill {
@@ -105,10 +119,7 @@ p {
     padding: 0;
     margin: 0;
     display: flex;
-}
-
-.btn {
-    margin: 0;
+    transition: .3s;
 }
 
 .priceContainer {
@@ -120,7 +131,12 @@ p {
     padding: 0;
     margin: 0;
     height: 100%;
-    font-size: 1.3vw;
+    font-size: 100%;
+    transition: .3s;
+}
+
+.card:hover .price {
+    font-size: 110%;
 }
 
 .my-flex {
@@ -130,6 +146,33 @@ p {
 .btnContainer {
     width: 60%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
+}
+
+.btn {
+    margin: 0;
+    transition: .3s;
+}
+
+.card-title,
+.card-text {
+    transition: .3s;
+}
+
+.card:hover .card-title {
+    font-size: 135%;
+}
+
+.card:hover .card-text
+{
+    font-size: 107.5%;
+}
+
+svg {
+    transition: .3s;
+}
+
+.card:hover .gear {
+    width: 22%;
 }

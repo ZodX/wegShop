@@ -54,10 +54,10 @@ public class ProductService {
                     }
                 }
 
-                break;
+                return;
             }
-            throw new ProductNotFoundException(id);
         }
+        throw new ProductNotFoundException(id);
     }
 
     public void modifyProduct(Long id, Product modifiedProduct) {

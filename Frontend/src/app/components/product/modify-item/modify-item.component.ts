@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Product} from "../product/product";
 import {ProductsService} from "../../../services/products.service";
 import {Router} from "@angular/router";
+import {ModifyProductService} from "../../../services/modify-product.service";
 
 @Component({
   selector: 'app-modify-item',
@@ -14,19 +15,46 @@ export class ModifyItemComponent implements OnInit {
   product: Product;
 
   constructor(
-    private productService: ProductsService,
+    private modifyService: ModifyProductService,
     private route: Router
   ) { }
 
   ngOnInit(): void {
     console.log(this.productId);
 
-    this.productService.productById(this.productId).subscribe( product => this.product = product);
+    this.modifyService.productById(this.productId).subscribe( product => {
+      this.product = product;
+    }, error => {
+      this.route.navigate(['/products']);
+    });
   }
 
   handleModifyDone(): void {
-    this.productService.productModifyById(this.product.id, this.product).subscribe(() => {
+    this.modifyService.productModifyById(this.product.id, this.product).subscribe(() => {
       this.route.navigate(['/products']);
+    }, error => {
+      switch (error) {
+        case "EmptyFieldError": {
+          window.alert("Some fileld(s) are empty!");
+          break;
+        }
+        case "QuantityIsNaNError": {
+          window.alert("Quantity can be only a number!");
+          break;
+        }
+        case "PriceIsNaNError": {
+          window.alert("Price can be only a number!");
+          break;
+        }
+        case "QuantityNegativeError": {
+          window.alert("Quantity can't be negative!");
+          break;
+        }
+        case "PriceNegativeError": {
+          window.alert("Price can't be negative!");
+          break;
+        }
+      }
     });
   }
 

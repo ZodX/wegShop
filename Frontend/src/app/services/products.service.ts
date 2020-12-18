@@ -23,8 +23,4 @@ export class ProductsService {
     return this.http.get<Product>('http://localhost:8080/api/products/' + id);
   }
 
-  productModifyById(id: number, product: Product) {
-    return this.http.put('http://localhost:8080/api/products/modify/' + id, product);
-  }
-
 }

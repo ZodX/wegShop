@@ -8,7 +8,11 @@ VALUES
 INSERT INTO PRODUCT
 (name, quantity, price, description)
 VALUES
-('análrózsa', 4, 300, 'Explore the exstasy...');
+('analrozsa', 4, 300, 'Explore the exstasy...'),
+('Kefe', 12, 200, 'Kefélj'),
+('Szek', 5, 2000, 'Explore the chair'),
+('Gep', 2, 20000, 'GAMING'),
+('Kuka', 10, 100, 'Trash 4 lif');
 
 INSERT INTO CART
 (product_id, user_id)

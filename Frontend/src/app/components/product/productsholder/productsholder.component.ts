@@ -11,6 +11,9 @@ import {ProductsService} from "../../../services/products.service";
 export class ProductsholderComponent implements OnInit {
 
   products: Product[];
+  productRows: Product[][] = [[]];
+  columns = 4;
+  rows: number;
 
   constructor(
     private router: Router,
@@ -24,7 +27,35 @@ export class ProductsholderComponent implements OnInit {
   getProducts(): void {
     this.productService.productService().subscribe((result) => {
       this.products = result;
+      this.rows = Math.floor(this.products.length/4) + 1;
+      console.log(this.rows);
+      for (var i = 0; i < this.rows - 1; i++) {
+        this.productRows.push([]);
+      }
+
+      for (var i = 0; i < this.rows; i++) {
+        for (var j = 0; j < this.columns; j++) {
+          this.productRows[i].push(new Product());
+        }
+      }
+
+      console.log(this.productRows);
+
+      var productRows = this.productRows;
+      var c_row = 0;
+      var c_col = 0;
+      this.products.forEach(function (c_product) {
+        console.log(c_product);
+        productRows[c_row][c_col] = c_product;
+        if (c_col < 3) {
+          c_col++;
+        } else {
+          c_col = 0;
+          c_row++;
+        }
+      });
+      this.productRows = productRows;
+      console.log(this.productRows);
     });
   }
-
 }

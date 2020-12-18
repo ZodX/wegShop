@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
-import {Product} from "../components/product/product/product";
+import {Product} from "../../components/product/product/product";
 import {catchError} from "rxjs/operators";
 
 @Injectable({

@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Product} from "../product/product";
-import {ProductsService} from "../../../services/products.service";
+import {ProductsService} from "../../../services/product-services/products.service";
 import {Router} from "@angular/router";
-import {ModifyProductService} from "../../../services/modify-product.service";
+import {ModifyProductService} from "../../../services/product-services/modify-product.service";
 
 @Component({
   selector: 'app-modify-item',

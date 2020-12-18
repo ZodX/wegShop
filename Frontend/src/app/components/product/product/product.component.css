@@ -44,7 +44,7 @@ p {
 }
 
 .priceContainer {
-    width: 30%;
+    width: 40%;
 }
 
 .price {
@@ -60,7 +60,7 @@ p {
 }
 
 .btnContainer {
-    width: 70%;
+    width: 60%;
     display: flex;
     justify-content: flex-end;
     align-items: center;

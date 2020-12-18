@@ -13,6 +13,8 @@ import { ProductsholderComponent } from './components/product/productsholder/pro
 import { ProductsComponent } from './components/product/products/products.component';
 import { ProductComponent } from './components/product/product/product.component';
 import {HttpInterceptorService} from "./http-interceptor.service";
+import {ModifyComponent} from "./components/product/modify/modify.component";
+import { ModifyItemComponent } from './components/product/modify-item/modify-item.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import {HttpInterceptorService} from "./http-interceptor.service";
     MenuComponent,
     ProductsholderComponent,
     ProductsComponent,
-    ProductComponent
+    ProductComponent,
+    ModifyComponent,
+    ModifyItemComponent
   ],
   imports: [
     BrowserModule,

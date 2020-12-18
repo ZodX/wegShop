@@ -15,9 +15,15 @@ export class ProductComponent implements OnInit {
   @Input() price: number;
   @Input() description: string;
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  handleModify(): void {
+    this.router.navigate(['/modify/' + this.id.toString()]);
   }
 
 }

@@ -16,6 +16,7 @@ export class ProductComponent implements OnInit {
   @Input() quantity: number;
   @Input() price: number;
   @Input() description: string;
+  username: string;
 
   constructor(
     private router: Router,
@@ -23,6 +24,7 @@ export class ProductComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.username = sessionStorage.getItem("authenticatedUser");
   }
 
   handleModify(): void {

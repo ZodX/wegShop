@@ -24,7 +24,7 @@ public class Cart {
         return product_id;
     }
 
-    public String getUser_id() {
+    public String getUsername() {
         return username;
     }
 

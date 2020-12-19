@@ -37,10 +37,10 @@ public class CartController {
         cartService.addCart(newCart);
     }
 
-    @DeleteMapping("/delete/{user_id}-{product_id}")
+    @DeleteMapping("/delete/{username}-{product_id}")
     void deleteCart(
-            @PathVariable Long user_id,
+            @PathVariable String username,
             @PathVariable Long product_id){
-        cartService.deleteCartItem(user_id, product_id);
+        cartService.deleteCartItem(username, product_id);
     }
 }

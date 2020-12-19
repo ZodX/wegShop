@@ -2,11 +2,9 @@ package com.zodx.webshop.service;
 
 import com.zodx.webshop.entity.Cart;
 import com.zodx.webshop.entity.Product;
-import com.zodx.webshop.error.CartAlreadyExistsException;
-import com.zodx.webshop.error.CartNotFoundException;
-import com.zodx.webshop.error.ProductNotFoundException;
-import com.zodx.webshop.error.UserNotFoundException;
+import com.zodx.webshop.error.*;
 import com.zodx.webshop.repository.CartRepository;
+import com.zodx.webshop.repository.ProductRepository;
 import com.zodx.webshop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,27 +21,15 @@ public class CartService {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    ProductService productService;
+
     public List<Cart> getAllCarts() {
         return new ArrayList<>(cartRepository.findAll());
     }
 
     public Cart getCartById(Long id) {
         return cartRepository.findById(id).orElseThrow(() -> new CartNotFoundException(id));
-    }
-
-    public List<Cart> getAllCartsByUserId(Long id) {
-        userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
-
-        ArrayList list = new ArrayList<>();
-
-        List<Cart> carts = getAllCarts();
-        for (Cart cart : carts) {
-            if (cart.getUser_id().equals(id)) {
-                list.add(cart);
-            }
-        }
-
-        return list;
     }
 
     public void addCart(Cart newCart) {
@@ -53,17 +39,51 @@ public class CartService {
 //                throw new CartAlreadyExistsException(newCart.getId());
 //            }
 //        }
+        List<Product> products = this.productService.getAllProducts();
+
+        System.out.println("ADDING CARTITEM" + ":" + newCart.getProduct_id());
+
+        for (Product product : products) {
+            if (product.getId().equals(newCart.getProduct_id())) {
+                if (product.getQuantity() < 1) {
+                    throw new QuantityMinimumReachedException();
+                } else {
+
+                    Long quantity = product.getQuantity();
+                    product.setQuantity(quantity - 1);
+                    this.productService.modifyProduct(newCart.getProduct_id(), product);
+                    break;
+                }
+            }
+        }
+
         cartRepository.save(newCart);
     }
 
-    public void deleteCartItem(Long user_id, Long product_id) {
+    public void deleteCartItem(String username, Long product_id) {
+
+        List<Product> products = this.productService.getAllProducts();
         List<Cart> carts = getAllCarts();
-        for (Cart cart : carts) {
-            if (cart.getUser_id().equals(user_id) && cart.getProduct_id().equals(product_id)) {
+        Boolean found = false;
+
+        for(Cart cart : carts) {
+            if (cart.getUsername().equals(username) && cart.getProduct_id().equals(product_id)) {
                 cartRepository.deleteById(cart.getId());
-                return;
+                found = true;
+                break;
             }
         }
-        throw new CartNotFoundException(user_id, product_id);
+        
+        if (found) {
+            for (Product product : products) {
+                if (product.getId().equals(product_id)) {
+                    Long quantity = product.getQuantity();
+                    product.setQuantity(quantity + 1);
+                    this.productService.modifyProduct(product.getId(), product);
+                    return;
+                }
+            }
+        }
+        throw new CartNotFoundException(username, product_id);
     }
 }

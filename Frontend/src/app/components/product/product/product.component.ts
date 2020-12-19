@@ -3,6 +3,8 @@ import {AuthenticationService} from "../../authentication/login/authentication.s
 import {Router} from "@angular/router";
 import {DeleteProductService} from "../../../services/product-services/delete-product.service";
 import {ProductsComponent} from "../products/products.component";
+import {CartAddService} from "../../../services/cartservices/cart-add.service";
+import {Cart} from "../../cart/cart";
 
 @Component({
   selector: 'app-product',
@@ -20,7 +22,8 @@ export class ProductComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private deleteService: DeleteProductService
+    private deleteService: DeleteProductService,
+    private cartAddService: CartAddService
   ) { }
 
   ngOnInit(): void {
@@ -40,6 +43,17 @@ export class ProductComponent implements OnInit {
   redirectTo(uri: string){
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
       this.router.navigate([uri]));
+  }
+
+  handleAddToCart(): void {
+    let cart: Cart = new Cart();
+
+    cart.username = this.username;
+    cart.product_id = this.id;
+
+    this.cartAddService.addToCart(cart).subscribe(() => {
+      console.log(cart.username);
+    });
   }
 
 }

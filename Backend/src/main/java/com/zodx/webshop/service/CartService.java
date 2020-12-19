@@ -47,12 +47,12 @@ public class CartService {
     }
 
     public void addCart(Cart newCart) {
-        List<Cart> carts = getAllCarts();
-        for (Cart cart : carts) {
-            if (newCart.getId().equals(newCart.getId())) {
-                throw new CartAlreadyExistsException(newCart.getId());
-            }
-        }
+//        List<Cart> carts = getAllCarts();
+//        for (Cart cart : carts) {
+//            if (newCart.getId().equals(newCart.getId())) {
+//                throw new CartAlreadyExistsException(newCart.getId());
+//            }
+//        }
         cartRepository.save(newCart);
     }
 

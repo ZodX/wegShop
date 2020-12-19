@@ -14,7 +14,7 @@ public class Cart {
     private Long product_id;
 
     @Column
-    private Long user_id;
+    private String username;
 
     public Long getId() {
         return id;
@@ -24,8 +24,8 @@ public class Cart {
         return product_id;
     }
 
-    public Long getUser_id() {
-        return user_id;
+    public String getUser_id() {
+        return username;
     }
 
     public void setId(Long id) {
@@ -36,7 +36,7 @@ public class Cart {
         this.product_id = product_id;
     }
 
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

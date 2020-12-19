@@ -32,7 +32,7 @@
           <p class="price my-flex">{{ price }} $</p>
         </div>
         <div *ngIf="username === 'user'" class="btnContainer">
-          <div class="btn btn-success">Add to cart</div>
+          <div (click)="handleAddToCart()" class="btn btn-success">Add to cart</div>
         </div>
       </div>
     </div>

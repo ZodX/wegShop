@@ -21,7 +21,7 @@
             <hr>
             <div class="summaryContainer">
                 <div class="orderContainer">
-                    <button>Order now</button>
+                    <button *ngIf="cartItems.length > 0">Order now</button>
                 </div>
                 <div class="totalPriceContainer my-flex">
                     <p id="priceText">Total: </p>

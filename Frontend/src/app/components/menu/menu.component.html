@@ -13,7 +13,11 @@
       <form class="d-flex">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li>
-            <a *ngIf="isLoggedIn" href="/cart" class="nav-link" href="/cart" tabindex="-1">Cart</a>
+            <a id="cartLink" *ngIf="isLoggedIn" href="/cart" class="nav-link" href="/cart" tabindex="-1">
+              <div>Cart(</div>
+              <div id="elementNumber" [innerHTML]="db"></div>
+              <div>)</div>
+            </a>
           </li>
           <li>
             <a *ngIf="isLoggedIn" class="nav-link" href="/Frontend/src" (click)="handleLogout()">Logout</a>

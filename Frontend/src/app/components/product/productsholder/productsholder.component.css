@@ -1,5 +1,6 @@
 .addBtnContainer {
   height: 7vh;
+  background-color: rgb(235, 235, 235);
 }
 
 .btn {
@@ -8,6 +9,7 @@
 
 .my-container {
     height: 86vh;
+    background-color: rgb(235, 235, 235);
 }
 
 .bigger {

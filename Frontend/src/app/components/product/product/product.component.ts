@@ -47,19 +47,24 @@ export class ProductComponent implements OnInit {
       this.router.navigate([uri]));
   }
 
-  handleAddToCart(): void {
-    if (this.quantity < 1) {
-      window.alert("Out of stock");
+  handleAddToCart(): void   {
+    if (this.username === 'admin') {
+      window.alert("Admin cant add to cart.");
     } else {
-      let cart: Cart = new Cart();
-      cart.username = this.username;
-      cart.product_id = this.id;
+      if (this.quantity < 1) {
+        window.alert("Out of stock");
+      } else {
+        let cart: Cart = new Cart();
+        cart.username = this.username;
+        cart.product_id = this.id;
+        this.quantity -= 1;
 
-      this.quantity -= 1;
 
-      this.cartAddService.addToCart(cart).subscribe(() => {});
+        let db = parseInt(document.getElementById("elementNumber").innerHTML);
+        document.getElementById("elementNumber").innerHTML = (db + 1).toString();
+
+        this.cartAddService.addToCart(cart).subscribe(() => {});
+      }
     }
-
   }
-
 }

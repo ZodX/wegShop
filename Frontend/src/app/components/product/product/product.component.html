@@ -31,7 +31,7 @@
         <div class="priceContainer my-flex">
           <p class="price my-flex">{{ price }} $</p>
         </div>
-        <div class="btnContainer">
+        <div *ngIf="username === 'user'" class="btnContainer">
           <div class="btn btn-success">Add to cart</div>
         </div>
       </div>

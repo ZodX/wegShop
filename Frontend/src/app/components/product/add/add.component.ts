@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddComponent implements OnInit {
 
-  constructor() { }
+  username: string;
+
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+    this.username = sessionStorage.getItem('authenticatedUser');
+
+    if (this.username === 'user')
+      this.router.navigate(['/main']);
   }
 
 }

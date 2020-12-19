@@ -20,6 +20,7 @@ import { AddComponent } from './components/product/add/add.component';
 import {CartComponent} from "./components/cart/cart/cart.component";
 import {CartholderComponent} from "./components/cart/cartholder/cartholder.component";
 import {CartItemComponent} from "./components/cart/cart-item/cart-item.component";
+import {RegisterComponent} from "./components/authentication/register/register.component";
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {CartItemComponent} from "./components/cart/cart-item/cart-item.component
     AddComponent,
     CartComponent,
     CartholderComponent,
-    CartItemComponent
+    CartItemComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

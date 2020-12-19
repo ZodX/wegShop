@@ -33,12 +33,7 @@ public class CartService {
     }
 
     public void addCart(Cart newCart) {
-//        List<Cart> carts = getAllCarts();
-//        for (Cart cart : carts) {
-//            if (newCart.getId().equals(newCart.getId())) {
-//                throw new CartAlreadyExistsException(newCart.getId());
-//            }
-//        }
+
         List<Product> products = this.productService.getAllProducts();
 
         System.out.println("ADDING CARTITEM" + ":" + newCart.getProduct_id() + ":" + newCart.getUsername());
@@ -89,5 +84,15 @@ public class CartService {
             }
         }
         throw new CartNotFoundException(username, product_id);
+    }
+
+    public void deleteCartItemsWithUsername(String username) {
+        List<Cart> carts = getAllCarts();
+
+        for (Cart cart : carts) {
+            if (cart.getUsername().equals(username)) {
+                deleteCartItem(username, cart.getProduct_id());
+            }
+        }
     }
 }

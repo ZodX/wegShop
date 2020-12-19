@@ -4,6 +4,7 @@ import com.zodx.webshop.entity.User;
 import com.zodx.webshop.error.*;
 import com.zodx.webshop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,6 +15,9 @@ public class UserServiceDeprecated {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public List<User> getAllUsers() {
         return new ArrayList<>(userRepository.findAll());
@@ -30,7 +34,13 @@ public class UserServiceDeprecated {
                 throw new UserAlreadyExistsException(newUser.getUsername());
             }
         }
-        userRepository.save(newUser);
+
+        User user = new User();
+        user.setUserame(newUser.getUsername());
+        user.setPassword(passwordEncoder.encode(newUser.getPassword()));
+        user.setRole("ROLE_USER");
+
+        userRepository.save(user);
     }
 
     public void modifyUser(Long id, User modifiedUser) {

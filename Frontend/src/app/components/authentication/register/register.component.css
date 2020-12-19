@@ -1,0 +1,51 @@
+.my-container {
+    height: 93vh;
+}
+
+.form-signin {
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.card {
+    background-color: rgb(138, 226, 255);
+}
+
+h1 {
+    margin-top: 0.5em;
+}
+
+.form-group > * {
+    margin-top: 0.5em;
+}
+
+.card {
+    height: 60vh;
+}
+
+.alertContainer {
+    height: 5vh;
+    width: 100%;
+    margin-bottom: 2.5vh;
+}
+
+#firstAlert {
+    margin-bottom: 0;
+}
+
+.alert {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 0.5em;
+}
+
+button {
+    width: 10vw;
+    height: 5vh;
+    font-size: 1vw;
+}

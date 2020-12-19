@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
         user.password = this.password;
 
         this.userService.addUser(user).subscribe(
-          data => console.log('success', data),
+          data => console.log('success'),
           error => {
             this.userAlreadyExists = true;
             setTimeout(() =>

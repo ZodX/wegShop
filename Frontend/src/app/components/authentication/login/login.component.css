@@ -18,3 +18,12 @@ h1 {
 .form-group > * {
   margin-top: 0.5em;
 }
+
+.buttonsContainer {
+  padding-top: 1vh;
+}
+
+.buttonsContainer > div {
+  height: 100%;
+  width: 50%;
+}

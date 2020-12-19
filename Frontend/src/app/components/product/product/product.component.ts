@@ -5,6 +5,8 @@ import {DeleteProductService} from "../../../services/product-services/delete-pr
 import {ProductsComponent} from "../products/products.component";
 import {CartAddService} from "../../../services/cartservices/cart-add.service";
 import {Cart} from "../../cart/cart";
+import {Product} from "./product";
+import {ModifyProductService} from "../../../services/product-services/modify-product.service";
 
 @Component({
   selector: 'app-product',
@@ -46,12 +48,18 @@ export class ProductComponent implements OnInit {
   }
 
   handleAddToCart(): void {
-    let cart: Cart = new Cart();
+    if (this.quantity < 1) {
+      window.alert("Out of stock");
+    } else {
+      let cart: Cart = new Cart();
+      cart.username = this.username;
+      cart.product_id = this.id;
 
-    cart.username = this.username;
-    cart.product_id = this.id;
+      this.quantity -= 1;
 
-    this.cartAddService.addToCart(cart).subscribe(() => {});
+      this.cartAddService.addToCart(cart).subscribe(() => {});
+    }
+
   }
 
 }

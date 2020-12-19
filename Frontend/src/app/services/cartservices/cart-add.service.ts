@@ -10,7 +10,6 @@ export class CartAddService {
   constructor(private http: HttpClient) { }
 
   addToCart(newCart: Cart) {
-
     return this.http.post<Cart>('http://localhost:8080/api/carts/newCart', newCart);
   }
 }

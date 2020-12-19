@@ -15,6 +15,7 @@
                 [name]="product.name"
                 [description]="product.description"
                 [price]="product.price"
+                [product_id]="product.id"
               ></app-cart-item>
             </div>
             <hr>
@@ -24,7 +25,7 @@
                 </div>
                 <div class="totalPriceContainer my-flex">
                     <p id="priceText">Total: </p>
-                    <p id="priceNumber">200$</p>
+                    <p id="priceNumber">{{ totalprice }}$</p>
                 </div>
             </div>
         </div>

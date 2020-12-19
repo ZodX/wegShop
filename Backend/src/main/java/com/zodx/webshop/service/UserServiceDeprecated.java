@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class UserService {
+public class UserServiceDeprecated {
 
     @Autowired
     UserRepository userRepository;
@@ -26,8 +26,8 @@ public class UserService {
     public void addUser(User newUser) {
         List<User> users = getAllUsers();
         for (User user : users) {
-            if (newUser.getName().equals(user.getName())) {
-                throw new UserAlreadyExistsException(newUser.getName());
+            if (newUser.getUsername().equals(user.getUsername())) {
+                throw new UserAlreadyExistsException(newUser.getUsername());
             }
         }
         userRepository.save(newUser);
@@ -39,7 +39,7 @@ public class UserService {
         }
         userRepository.findById(id)
                 .map(x -> {
-                    x.setName(modifiedUser.getName());
+                    x.setUserame(modifiedUser.getUsername());
                     x.setPassword(modifiedUser.getPassword());
                     return userRepository.save(x);
                 }).orElseThrow(() -> new UserNotFoundException(id));

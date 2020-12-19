@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'products', component: ProductsComponent },
   { path: 'add', component: AddComponent },
   { path: 'modify/:id', component: ModifyComponent },
-  { path: '**', redirectTo: "main" },
+  { path: '**', redirectTo: 'main' },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

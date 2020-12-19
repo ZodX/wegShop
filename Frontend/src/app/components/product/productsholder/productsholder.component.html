@@ -1,7 +1,7 @@
-<div class="addBtnContainer my-flex">
+<div *ngIf="username === 'admin'" class="addBtnContainer my-flex">
     <button (click)="handleAddPressed()" class="btn btn-warning">Add Product</button>
 </div>
-<div class="my-container my-flex">
+<div [className]="username === 'admin' ? 'my-container my-flex smaller' : 'my-container my-flex bigger'" class="my-container my-flex">
 
     <div class="container overflow-auto">
         <div *ngFor="let row of productRows" class="row">

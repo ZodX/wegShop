@@ -1,8 +1,7 @@
 package com.zodx.webshop.controller;
 
-import com.zodx.webshop.entity.Product;
 import com.zodx.webshop.entity.User;
-import com.zodx.webshop.service.UserService;
+import com.zodx.webshop.service.UserServiceDeprecated;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -15,16 +14,16 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    UserService userService;
+    UserServiceDeprecated userServiceDeprecated;
 
     @GetMapping(path = "/getAllUsers")
     List<User> fetchUsers() {
-        return userService.getAllUsers();
+        return userServiceDeprecated.getAllUsers();
     }
 
     @GetMapping(path = "/{id}")
     User getById(@PathVariable Long id) {
-        return userService.getUserById(id);
+        return userServiceDeprecated.getUserById(id);
     }
 
     @PostMapping("/newUser")
@@ -32,13 +31,13 @@ public class UserController {
     void newUser(
             @RequestBody
             User newUser) {
-        userService.addUser(newUser);
+        userServiceDeprecated.addUser(newUser);
     }
 
     @PutMapping("/modify/{id}")
     void modifyUser(
             @PathVariable Long id,
             @RequestBody User modifiedUser) {
-        userService.modifyUser(id, modifiedUser);
+        userServiceDeprecated.modifyUser(id, modifiedUser);
     }
 }

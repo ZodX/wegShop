@@ -14,6 +14,7 @@ export class ProductsholderComponent implements OnInit {
   productRows: Product[][] = [[]];
   columns = 4;
   rows: number;
+  username: string | null;
 
   constructor(
     private router: Router,
@@ -22,6 +23,7 @@ export class ProductsholderComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProducts();
+    this.username = sessionStorage.getItem('authenticatedUser');
   }
 
   handleAddPressed(): void {

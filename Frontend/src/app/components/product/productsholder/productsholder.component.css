@@ -10,6 +10,10 @@
     height: 86vh;
 }
 
+.bigger {
+  height: 93vh;
+}
+
 .row {
   padding: 2.5vw;
 }

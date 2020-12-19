@@ -41,7 +41,7 @@ public class CartService {
 //        }
         List<Product> products = this.productService.getAllProducts();
 
-        System.out.println("ADDING CARTITEM" + ":" + newCart.getProduct_id());
+        System.out.println("ADDING CARTITEM" + ":" + newCart.getProduct_id() + ":" + newCart.getUsername());
 
         for (Product product : products) {
             if (product.getId().equals(newCart.getProduct_id())) {
@@ -68,18 +68,22 @@ public class CartService {
 
         for(Cart cart : carts) {
             if (cart.getUsername().equals(username) && cart.getProduct_id().equals(product_id)) {
+                System.out.println("Found cart item with: " + username + ":" + product_id);
                 cartRepository.deleteById(cart.getId());
                 found = true;
+                System.out.println("Deleted cart item with: " + username + ":" + product_id);
                 break;
             }
         }
-        
+
         if (found) {
             for (Product product : products) {
                 if (product.getId().equals(product_id)) {
                     Long quantity = product.getQuantity();
                     product.setQuantity(quantity + 1);
+                    System.out.println("Found Product with: " + product_id + " ID");
                     this.productService.modifyProduct(product.getId(), product);
+                    System.out.println("Updated product with: " + product_id + " ID");
                     return;
                 }
             }

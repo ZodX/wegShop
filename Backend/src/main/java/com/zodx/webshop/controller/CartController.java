@@ -21,11 +21,6 @@ public class CartController {
         return cartService.getAllCarts();
     }
 
-    @GetMapping(path = "/getAllCartsByUserId/{id}")
-    List<Cart> getCartsByUserId(@PathVariable Long id) {
-        return cartService.getAllCartsByUserId(id);
-    }
-
     @GetMapping(path = "/{id}")
     Cart getById(@PathVariable Long id) {
         return cartService.getCartById(id);

@@ -41,7 +41,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/products/modify/**").hasRole("ADMIN")
                 .antMatchers("/api/products/getAllProducts").permitAll()
                 .antMatchers("/api/products/**").permitAll()
-                .antMatchers("/api/carts/newCart").hasRole("USER").and().csrf().disable().cors().and().authorizeRequests()
+                .antMatchers("/api/carts/newCart").hasRole("USER")
+                .antMatchers("/api/carts/delete/**").hasRole("USER")
                 .antMatchers("/api/carts/getAllCarts").hasRole("USER")
                 .antMatchers("/**").hasRole("ADMIN")
                 .and().httpBasic();

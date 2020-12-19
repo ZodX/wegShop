@@ -41,6 +41,12 @@ public class DBInit implements CommandLineRunner {
         user2.setRole("ROLE_USER");
         this.userRepository.save(user2);
 
+        User user3 = new User();
+        user3.setUserame("newuser");
+        user3.setPassword(passwordEncoder.encode("hehe"));
+        user3.setRole("ROLE_USER");
+        this.userRepository.save(user3);
+
         for (int i = 0; i < 20; i++) {
             Product product = new Product();
             product.setName("Kenyer");

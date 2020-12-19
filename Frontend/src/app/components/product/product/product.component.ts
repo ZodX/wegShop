@@ -51,9 +51,7 @@ export class ProductComponent implements OnInit {
     cart.username = this.username;
     cart.product_id = this.id;
 
-    this.cartAddService.addToCart(cart).subscribe(() => {
-      console.log(cart.username);
-    });
+    this.cartAddService.addToCart(cart).subscribe(() => {});
   }
 
 }

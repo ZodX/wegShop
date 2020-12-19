@@ -17,6 +17,8 @@ import {ModifyComponent} from "./components/product/modify/modify.component";
 import { ModifyItemComponent } from './components/product/modify-item/modify-item.component';
 import { AddProductComponent } from './components/product/add-product/add-product.component';
 import { AddComponent } from './components/product/add/add.component';
+import {CartComponent} from "./components/cart/cart/cart.component";
+import {CartholderComponent} from "./components/cart/cartholder/cartholder.component";
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { AddComponent } from './components/product/add/add.component';
     ModifyComponent,
     ModifyItemComponent,
     AddProductComponent,
-    AddComponent
+    AddComponent,
+    CartComponent,
+    CartholderComponent
   ],
   imports: [
     BrowserModule,

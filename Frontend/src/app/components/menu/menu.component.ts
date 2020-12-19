@@ -23,15 +23,16 @@ export class MenuComponent implements OnInit {
     this.isLoggedIn = this.authenticationService.isUserLoggedIn();
     console.log('menu -> ' + this.isLoggedIn);
 
+    if (this.isLoggedIn) {
+      this.cartService.getItems().subscribe( (result) => {
 
-    this.cartService.getItems().subscribe( (result) => {
-
-      for (let cart of result) {
-        if (cart.username === sessionStorage.getItem('authenticatedUser')) {
-          this.db++;
+        for (let cart of result) {
+          if (cart.username === sessionStorage.getItem('authenticatedUser')) {
+            this.db++;
+          }
         }
-      }
-    });
+      });
+    }
   }
 
   handleLogout() {

@@ -3,9 +3,11 @@ package com.zodx.webshop.service;
 import com.zodx.webshop.entity.Cart;
 import com.zodx.webshop.entity.Order;
 import com.zodx.webshop.entity.Product;
+import com.zodx.webshop.entity.User;
 import com.zodx.webshop.error.ProductAlreadyExistsException;
 import com.zodx.webshop.error.ProductNotFoundException;
 import com.zodx.webshop.error.QuantityMinimumReachedException;
+import com.zodx.webshop.error.UserNamesDoesntMatchException;
 import com.zodx.webshop.repository.CartRepository;
 import com.zodx.webshop.repository.OrderRepository;
 import com.zodx.webshop.repository.ProductRepository;
@@ -30,6 +32,22 @@ public class OrderService {
 
     public Order getOrderById(Long id) {
         return orderRepository.findById(id).orElseThrow(() -> new ProductNotFoundException(id));
+    }
+
+    public List<Order> getAllOrdersByUser(String username, User getterUser) {
+        if (getterUser.getUsername().equals(username)) {
+            List<Order> orders = getAllOrders();
+            List<Order> outOrders = new ArrayList<>();
+
+            for (Order order : orders) {
+                if (order.getUsername().equals(username)) {
+                    outOrders.add(order);
+                }
+            }
+            return outOrders;
+        } else {
+            throw new UserNamesDoesntMatchException(username, getterUser.getUsername());
+        }
     }
 
     public void addOrder(Order newOrder) {

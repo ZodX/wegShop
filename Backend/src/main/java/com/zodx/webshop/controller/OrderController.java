@@ -1,6 +1,7 @@
 package com.zodx.webshop.controller;
 
 import com.zodx.webshop.entity.Order;
+import com.zodx.webshop.entity.User;
 import com.zodx.webshop.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,13 @@ public class OrderController {
     @GetMapping(path = "/getAllOrders")
     List<Order> fetchOrders() {
         return orderService.getAllOrders();
+    }
+
+    @PostMapping(path = "/getAllOrdersByUser/{username}")
+    List<Order> getOrdersByUser(
+            @PathVariable String username,
+            @RequestBody User getterUser) {
+        return orderService.getAllOrdersByUser(username, getterUser);
     }
 
     @GetMapping(path = "/{id}")

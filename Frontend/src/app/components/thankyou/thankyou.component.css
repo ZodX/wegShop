@@ -13,10 +13,6 @@
     box-shadow: 10px 10px 57px -29px rgba(0,0,0,0.75);
 }
 
-.myContainer > * {
-    border: thin solid red;
-}
-
 #titleContainer {
     height: 40%;
 }

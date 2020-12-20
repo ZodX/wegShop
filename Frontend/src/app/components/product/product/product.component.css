@@ -2,12 +2,10 @@
     border: thin solid rgba(0,0,0,.125);
     height: 50%;
     width: 100%;
-    display: flex;
-    justify-content: flex-end;
 }
 
 .deleteSvgContainer {
-    height: 20%;
+    height: 50%;
     width: 20%;
     background-color: lightgrey;
     color: white;
@@ -93,11 +91,11 @@
 }
 
 .svgContainer {
-    width: 40%;
-    height: 100%;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: flex-end;
+    padding-right: 0.5vw;
+    padding-bottom: 0.5vw;
 }
 
 svg:hover {
@@ -185,6 +183,17 @@ svg {
     transition: .3s;
 }
 
-.card:hover .gear {
-    width: 22%;
+.delContainer {
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.editContainer {
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
 }

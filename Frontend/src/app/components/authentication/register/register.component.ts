@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../../../services/user-services/user.service';
 import {User} from '../User';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,8 @@ export class RegisterComponent implements OnInit {
   userAlreadyExists: boolean;
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -35,7 +37,10 @@ export class RegisterComponent implements OnInit {
         user.password = this.password;
 
         this.userService.addUser(user).subscribe(
-          data => console.log('success'),
+          data => {
+            console.log('success');
+            this.router.navigate(['/']);
+          },
           error => {
             this.userAlreadyExists = true;
             setTimeout(() =>

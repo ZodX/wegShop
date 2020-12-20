@@ -10,7 +10,7 @@
                 <div id="pricePropertyContainer">Price</div>
             </div>
             <hr>
-            <div class="itemsContainer overflow-auto">
+            <div *ngIf="fetchDone" class="itemsContainer overflow-auto">
               <app-cart-item *ngFor="let product of products"
                 [name]="product.name"
                 [description]="product.description"
@@ -23,7 +23,7 @@
                 <div class="orderContainer">
                     <button *ngIf="cartItems.length > 0">Order now</button>
                 </div>
-                <div class="totalPriceContainer my-flex">
+                <div *ngIf="fetchDone" class="totalPriceContainer my-flex">
                     <p id="priceText">Total: </p>
                     <p id="priceNumber">{{ totalprice }}$</p>
                 </div>

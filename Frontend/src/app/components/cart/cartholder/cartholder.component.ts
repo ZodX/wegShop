@@ -14,6 +14,7 @@ export class CartholderComponent implements OnInit {
   cartItems: Cart[] = [];
   products: Product[] = [];
   totalprice = 0;
+  fetchDone: boolean;
 
   constructor(
     private cartSercice: CartService,
@@ -24,7 +25,7 @@ export class CartholderComponent implements OnInit {
     this.getCartItems();
   }
 
-  getCartItems() {
+  getCartItems(): void {
     this.cartSercice.getItems().subscribe( (result) => {
 
       for (let cart of result) {
@@ -41,6 +42,8 @@ export class CartholderComponent implements OnInit {
           this.totalprice += result.price;
         });
       }
+
+      this.fetchDone = true;
     });
   }
 

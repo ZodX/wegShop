@@ -10,7 +10,7 @@ export class OrderService {
 
   constructor(private http: HttpClient) { }
 
-  getAllOrders(getterUser: User) {
-    return this.http.post<Order[]>('http://localhost:8080/api/orders/getAllOrdersByUser/' + getterUser.username, getterUser);
+  getAllOrders() {
+    return this.http.get<Order[]>('http://localhost:8080/api/orders/getMyOrders');
   }
 }

@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -22,11 +25,17 @@ public class OrderController {
         return orderService.getAllOrders();
     }
 
-    @PostMapping(path = "/getAllOrdersByUser/{username}")
-    List<Order> getOrdersByUser(
-            @PathVariable String username,
-            @RequestBody User getterUser) {
-        return orderService.getAllOrdersByUser(username, getterUser);
+//    @PostMapping(path = "/getAllOrdersByUser/{username}")
+//    List<Order> getOrdersByUser(
+//            @PathVariable String username,
+//            @RequestBody User getterUser) {
+//        return orderService.getAllOrdersByUser(username, getterUser);
+//    }
+
+    @GetMapping(path = "/getMyOrders")
+    List<Order> getMyOrders(HttpServletRequest req) {
+        Principal princ = req.getUserPrincipal();
+        return orderService.getAllOrdersByUser(princ.getName());
     }
 
     @GetMapping(path = "/{id}")

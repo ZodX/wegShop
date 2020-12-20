@@ -34,8 +34,7 @@ public class OrderService {
         return orderRepository.findById(id).orElseThrow(() -> new ProductNotFoundException(id));
     }
 
-    public List<Order> getAllOrdersByUser(String username, User getterUser) {
-        if (getterUser.getUsername().equals(username)) {
+    public List<Order> getAllOrdersByUser(String username) {
             List<Order> orders = getAllOrders();
             List<Order> outOrders = new ArrayList<>();
 
@@ -45,9 +44,6 @@ public class OrderService {
                 }
             }
             return outOrders;
-        } else {
-            throw new UserNamesDoesntMatchException(username, getterUser.getUsername());
-        }
     }
 
     public void addOrder(Order newOrder) {

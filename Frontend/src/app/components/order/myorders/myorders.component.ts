@@ -21,17 +21,10 @@ export class MyordersComponent implements OnInit {
   }
 
   getMyOrders(): void {
-    let user = new User();
-    user.username = this.username;
 
-    this.orderService.getAllOrders(user).subscribe( (result) => {
+    this.orderService.getAllOrders().subscribe( (result) => {
       this.myOrders = result;
       console.log(this.myOrders);
-    })
-
-    // this.orderService.getAllOrders(this.username).subscribe((result) = > {
-    //   this.myOrders = result;
-    // });
+    });
   }
-
 }

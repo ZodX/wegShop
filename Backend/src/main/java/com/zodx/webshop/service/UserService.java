@@ -8,8 +8,10 @@ import com.zodx.webshop.error.UserNamesDoesntMatchException;
 import com.zodx.webshop.error.UserNotFoundException;
 import com.zodx.webshop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,14 +29,21 @@ public class UserService {
     }
 
     public User getUserByUsername(String username) {
-        return userRepository.findByUsername(username).orElseThrow(() -> new UserNotFoundException(username));
+        List<User> users = getAllUsers();
+
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
+                return user;
+            }
+        }
+        throw new UserNotFoundException(username);
     }
 
-    public Long getUserOrderCounterByUserName(String username, String getterUsername) {
-        if (username.equals(getterUsername) || getterUsername.equals("admin"))
+    public Long getUserOrderCounterByUserName(String username, User getterUser) {
+        if (username.equals(getterUser.getUsername()) || getterUser.getUsername().equals("admin")) {
             return userRepository.findByUsername(username).get().getOrder_counter();
-        else {
-            throw new UserNamesDoesntMatchException(username, getterUsername);
+        } else {
+            throw new UserNamesDoesntMatchException(username, getterUser.getUsername());
         }
     }
 

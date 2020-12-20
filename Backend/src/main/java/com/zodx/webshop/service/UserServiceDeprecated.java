@@ -54,4 +54,31 @@ public class UserServiceDeprecated {
                     return userRepository.save(x);
                 }).orElseThrow(() -> new UserNotFoundException(id));
     }
+
+    public void incUserOrderCounter(String username, User modifiedUser) {
+        if (username.equals(modifiedUser.getUsername())){
+            System.out.println(modifiedUser.getOrder_counter());
+
+            List<User> users = getAllUsers();
+            Long id = null;
+
+            for (User user : users) {
+                if (user.getUsername().equals(modifiedUser.getUsername())) {
+                    id = user.getId();
+                }
+            }
+
+            if (id == null) {
+                throw new UserNotFoundException(modifiedUser.getUsername());
+            }
+
+            userRepository.findById(id)
+                    .map(x -> {
+                        x.setOrder_counter(modifiedUser.getOrder_counter());
+                        return userRepository.save(x);
+                    });
+        } else {
+            throw new UserNamesDoesntMatchException(username, modifiedUser.getUsername());
+        }
+    }
 }

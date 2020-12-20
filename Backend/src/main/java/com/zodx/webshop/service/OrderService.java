@@ -21,6 +21,9 @@ public class OrderService {
     @Autowired
     OrderRepository orderRepository;
 
+    @Autowired
+    CartRepository cartRepository;
+
     public List<Order> getAllOrders() {
         return new ArrayList<>(orderRepository.findAll());
     }
@@ -30,6 +33,14 @@ public class OrderService {
     }
 
     public void addOrder(Order newOrder) {
+        List<Cart> carts = cartRepository.findAll();
+
+        for (Cart cart : carts) {
+            if (cart.getUsername().equals(newOrder.getUsername()) && cart.getProduct_id().equals(newOrder.getProduct_id())) {
+                cartRepository.deleteById(cart.getId());
+            }
+        }
+
         orderRepository.save(newOrder);
     }
 }

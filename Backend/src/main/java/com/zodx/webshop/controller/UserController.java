@@ -36,12 +36,12 @@ public class UserController {
         return userService.getUserByUsername(username);
     }
 
-    @GetMapping("/getOrderCounter/{username}")
+    @PostMapping("/getOrderCounter/{username}")
     Long getOrderCount(
             @PathVariable String username,
-            @RequestBody String getterUsername
+            @RequestBody User user
     ) {
-        return userService.getUserOrderCounterByUserName(username, getterUsername);
+        return userService.getUserOrderCounterByUserName(username, user);
     }
 
     @PostMapping("/newUser")
@@ -57,6 +57,13 @@ public class UserController {
             @PathVariable Long id,
             @RequestBody User modifiedUser) {
         userServiceDeprecated.modifyUser(id, modifiedUser);
+    }
+
+    @PutMapping("incOrderCounter/{username}")
+    void incOrderCounter(
+            @PathVariable String username,
+            @RequestBody User modifiedUser) {
+        userServiceDeprecated.incUserOrderCounter(username, modifiedUser);
     }
 
     @DeleteMapping("/delete/{username}")

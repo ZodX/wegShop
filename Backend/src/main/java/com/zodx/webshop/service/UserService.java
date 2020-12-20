@@ -31,7 +31,7 @@ public class UserService {
     }
 
     public Long getUserOrderCounterByUserName(String username, String getterUsername) {
-        if (username.equals(getterUsername))
+        if (username.equals(getterUsername) || getterUsername.equals("admin"))
             return userRepository.findByUsername(username).get().getOrder_counter();
         else {
             throw new UserNamesDoesntMatchException(username, getterUsername);

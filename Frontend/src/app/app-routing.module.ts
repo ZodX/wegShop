@@ -7,6 +7,7 @@ import {ModifyComponent} from "./components/product/modify/modify.component";
 import {AddComponent} from "./components/product/add/add.component";
 import {CartComponent} from "./components/cart/cart/cart.component";
 import {RegisterComponent} from "./components/authentication/register/register.component";
+import {ThankyouComponent} from "./components/thankyou/thankyou.component";
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'modify/:id', component: ModifyComponent },
   { path: 'cart', component: CartComponent},
   { path: 'register', component: RegisterComponent},
+  { path: 'thank', component: ThankyouComponent},
   { path: '**', redirectTo: 'main' },
 ];
 @NgModule({

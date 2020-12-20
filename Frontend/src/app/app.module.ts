@@ -21,6 +21,7 @@ import {CartComponent} from "./components/cart/cart/cart.component";
 import {CartholderComponent} from "./components/cart/cartholder/cartholder.component";
 import {CartItemComponent} from "./components/cart/cart-item/cart-item.component";
 import {RegisterComponent} from "./components/authentication/register/register.component";
+import {ThankyouComponent} from "./components/thankyou/thankyou.component";
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {RegisterComponent} from "./components/authentication/register/register.c
     CartComponent,
     CartholderComponent,
     CartItemComponent,
-    RegisterComponent
+    RegisterComponent,
+    ThankyouComponent
   ],
   imports: [
     BrowserModule,

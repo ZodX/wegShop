@@ -1,0 +1,42 @@
+.holder {
+    height: 93vh;
+    background-color: lightgrey;
+}
+
+.myContainer {
+    height: 70vh;
+    width: 70vw;
+    display: block;
+    background-color: white;
+    -webkit-box-shadow: 10px 10px 57px -29px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 57px -29px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 57px -29px rgba(0,0,0,0.75);
+}
+
+.myContainer > * {
+    border: thin solid red;
+}
+
+#titleContainer {
+    height: 40%;
+}
+
+.ph {
+    height: 40%;
+}
+
+.navigateContainer {
+    display: flex;
+    height: 20%;
+}
+
+.navigateContainer > *{
+    width: 50%;
+    height: 100%;
+}
+
+.btn {
+    padding: 1vw;
+    border-radius: 1em;
+    font-size: 1vw;
+}

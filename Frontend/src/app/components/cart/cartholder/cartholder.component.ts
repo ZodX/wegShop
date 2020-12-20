@@ -6,6 +6,7 @@ import {ProductsService} from '../../../services/product-services/products.servi
 import {Order} from "../order";
 import {CartOrderService} from "../../../services/cartservices/cart-order.service";
 import {User} from "../../authentication/User";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-cartholder',
@@ -24,7 +25,8 @@ export class CartholderComponent implements OnInit {
   constructor(
     private cartSercice: CartService,
     private productService: ProductsService,
-    private cartOrderService: CartOrderService
+    private cartOrderService: CartOrderService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -73,6 +75,8 @@ export class CartholderComponent implements OnInit {
       }
 
       this.cartOrderService.incOrderNumber(user).subscribe();
+
+      this.router.navigate(['/thank']);
     });
   }
 

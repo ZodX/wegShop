@@ -38,8 +38,10 @@ public class UserController {
 
     @GetMapping("/getOrderCounter/{username}")
     Long getOrderCount(
-            @PathVariable String username) {
-        return userService.getUserOrderCounterByUserName(username);
+            @PathVariable String username,
+            @RequestBody String getterUsername
+    ) {
+        return userService.getUserOrderCounterByUserName(username, getterUsername);
     }
 
     @PostMapping("/newUser")

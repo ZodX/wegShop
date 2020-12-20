@@ -4,6 +4,8 @@ import {Cart} from '../cart';
 import {Product} from '../../product/product/product';
 import {ProductsService} from '../../../services/product-services/products.service';
 import {Order} from "../order";
+import {CartOrderService} from "../../../services/cartservices/cart-order.service";
+import {User} from "../../authentication/User";
 
 @Component({
   selector: 'app-cartholder',
@@ -17,10 +19,12 @@ export class CartholderComponent implements OnInit {
   totalprice = 0;
   fetchDone: boolean;
   username: string;
+  orderCount: ArrayBuffer;
 
   constructor(
     private cartSercice: CartService,
-    private productService: ProductsService
+    private productService: ProductsService,
+    private cartOrderService: CartOrderService
   ) { }
 
   ngOnInit(): void {
@@ -51,32 +55,25 @@ export class CartholderComponent implements OnInit {
   }
 
   handleOrderNow(): void   {
+    let user = new User();
+    user.username = this.username;
 
-    for (let item of this.cartItems) {
-      let order: Order = new Order();
-      order.username = item.username;
-      order.product_id = item.product_id;
-    }
+    this.cartOrderService.getUserOrderCount(user).subscribe( (result) => {
+      this.orderCount = result + 1;
+      console.log(this.orderCount);
+      user.order_counter = this.orderCount;
 
+      for (let item of this.cartItems) {
+        let order = new Order();
+        order.order_number = this.orderCount;
+        order.product_id = item.product_id;
+        order.username = item.username;
 
-    if (this.username === 'admin') {
-      window.alert("Admin cant add to cart.");
-    } else {
-      if (this.quantity < 1) {
-        window.alert("Out of stock");
-      } else {
-        let cart: Cart = new Cart();
-        cart.username = this.username;
-        cart.product_id = this.id;
-        this.quantity -= 1;
-
-
-        let db = parseInt(document.getElementById("elementNumber").innerHTML);
-        document.getElementById("elementNumber").innerHTML = (db + 1).toString();
-
-        this.cartAddService.addToCart(cart).subscribe(() => {});
+        this.cartOrderService.addOrder(order).subscribe();
       }
-    }
+
+      this.cartOrderService.incOrderNumber(user).subscribe();
+    });
   }
 
 }

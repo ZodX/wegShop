@@ -29,6 +29,10 @@ public class UserService {
         return userRepository.findByUsername(username).orElseThrow(() -> new UserNotFoundException(username));
     }
 
+    public Long getUserOrderCounterByUserName(String username) {
+        return userRepository.findByUsername(username).get().getOrder_counter();
+    }
+
     public void deleteUser(String username) {
 
         List<User> users = getAllUsers();

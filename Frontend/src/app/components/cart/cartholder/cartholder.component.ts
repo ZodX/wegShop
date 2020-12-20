@@ -3,6 +3,7 @@ import {CartService} from '../../../services/cartservices/cart.service';
 import {Cart} from '../cart';
 import {Product} from '../../product/product/product';
 import {ProductsService} from '../../../services/product-services/products.service';
+import {Order} from "../order";
 
 @Component({
   selector: 'app-cartholder',
@@ -15,6 +16,7 @@ export class CartholderComponent implements OnInit {
   products: Product[] = [];
   totalprice = 0;
   fetchDone: boolean;
+  username: string;
 
   constructor(
     private cartSercice: CartService,
@@ -23,6 +25,7 @@ export class CartholderComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCartItems();
+    this.username = sessionStorage.getItem("authenticatedUser");
   }
 
   getCartItems(): void {
@@ -45,6 +48,35 @@ export class CartholderComponent implements OnInit {
 
       this.fetchDone = true;
     });
+  }
+
+  handleOrderNow(): void   {
+
+    for (let item of this.cartItems) {
+      let order: Order = new Order();
+      order.username = item.username;
+      order.product_id = item.product_id;
+    }
+
+
+    if (this.username === 'admin') {
+      window.alert("Admin cant add to cart.");
+    } else {
+      if (this.quantity < 1) {
+        window.alert("Out of stock");
+      } else {
+        let cart: Cart = new Cart();
+        cart.username = this.username;
+        cart.product_id = this.id;
+        this.quantity -= 1;
+
+
+        let db = parseInt(document.getElementById("elementNumber").innerHTML);
+        document.getElementById("elementNumber").innerHTML = (db + 1).toString();
+
+        this.cartAddService.addToCart(cart).subscribe(() => {});
+      }
+    }
   }
 
 }

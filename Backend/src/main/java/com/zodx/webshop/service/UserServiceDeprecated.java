@@ -39,7 +39,7 @@ public class UserServiceDeprecated {
         user.setUserame(newUser.getUsername());
         user.setPassword(passwordEncoder.encode(newUser.getPassword()));
         user.setRole("ROLE_USER");
-
+        user.setOrder_counter(0L);
         userRepository.save(user);
     }
 

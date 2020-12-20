@@ -36,6 +36,12 @@ public class UserController {
         return userService.getUserByUsername(username);
     }
 
+    @GetMapping("/getOrderCounter/{username}")
+    Long getOrderCount(
+            @PathVariable String username) {
+        return userService.getUserOrderCounterByUserName(username);
+    }
+
     @PostMapping("/newUser")
     @ResponseStatus(HttpStatus.CREATED)
     void newUser(

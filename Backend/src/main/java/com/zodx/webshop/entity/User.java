@@ -23,6 +23,9 @@ public class User implements UserDetails {
     @Column
     private String password;
 
+    @Column
+    private Long order_counter;
+
     private String role;
 
     public Long getId() {
@@ -51,6 +54,18 @@ public class User implements UserDetails {
     @Override
     public String getUsername() {
         return this.username;
+    }
+
+    public Long getOrder_counter() {
+        return order_counter;
+    }
+
+    public void setOrder_counter(Long order_counter) {
+        this.order_counter = order_counter;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Override

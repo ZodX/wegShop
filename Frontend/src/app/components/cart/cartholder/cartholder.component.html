@@ -1,3 +1,4 @@
+<script src="cartholder.component.ts"></script>
 <div class="myContainer">
     <div class="titleContainer">
         <h1>My shopping cart</h1>
@@ -21,7 +22,7 @@
             <hr>
             <div class="summaryContainer">
                 <div class="orderContainer">
-                    <button *ngIf="cartItems.length > 0">Order now</button>
+                    <button (click)="handleOrderNow()" *ngIf="cartItems.length > 0">Order now</button>
                 </div>
                 <div *ngIf="fetchDone" class="totalPriceContainer my-flex">
                     <p id="priceText">Total: </p>

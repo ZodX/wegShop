@@ -37,7 +37,12 @@ export class MyordersComponent implements OnInit {
 
       let row_index = 0;
       let col_index = 0;
-      this.orderCount = 1;
+      if (this.myOrders.length == 0) {
+        this.orderCount = 0;
+      } else {
+        this.orderCount = 1;
+      }
+
       for (let order of this.myOrders) {
         console.log("iter");
         var current_product = null;

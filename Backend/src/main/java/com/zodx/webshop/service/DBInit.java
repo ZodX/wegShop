@@ -60,8 +60,15 @@ public class DBInit implements CommandLineRunner {
         Product product2 = new Product();
         product2.setName("Pencil");
         product2.setDescription("A very useful tool to write things down on a paper.");
-        product2.setPrice(4L);
+        product2.setPrice(1000L);
         product2.setQuantity(20L);
         this.productRepository.save(product2);
+
+        Product product3 = new Product();
+        product3.setName("Get Out!");
+        product3.setDescription("Horror/Thriller movie");
+        product3.setPrice(10L);
+        product3.setQuantity(100L);
+        this.productRepository.save(product3);
     }
 }

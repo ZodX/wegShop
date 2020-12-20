@@ -12,7 +12,7 @@
             <h3>Order {{ i + 1 }}</h3>
           </div>
           <div class="orderContent">
-            <p *ngFor="let product of orderProducts[i]"><b>Product:</b> {{ product.name }}</p>
+            <p *ngFor="let product of orderProducts[i]"><b>Product:</b> {{ product.name }} | {{ product.description }}</p>
           </div>
         </div>
         <hr>

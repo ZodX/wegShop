@@ -20,6 +20,9 @@
             </a>
           </li>
           <li>
+            <a *ngIf="isLoggedIn" class="nav-link" href="/myorders">My orders</a>
+          </li>
+          <li>
             <a *ngIf="isLoggedIn" class="nav-link" href="/Frontend/src" (click)="handleLogout()">Logout</a>
           </li>
         </ul>

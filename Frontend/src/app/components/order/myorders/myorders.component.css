@@ -1,0 +1,45 @@
+.holder {
+  background-color: lightgrey;
+}
+
+.myContainer {
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  width: 70vw;
+  display: block;
+  background-color: white;
+  -webkit-box-shadow: 10px 10px 57px -29px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 57px -29px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 57px -29px rgba(0,0,0,0.75);
+}
+
+#titleContainer {
+  height: 20%;
+}
+
+.ordersContainer {
+  height: 80%;
+}
+
+.order {
+  min-height: 15vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.orderTitle {
+  min-height: 10vw;
+  width: 30%;
+  border-right: thin solid grey;
+}
+
+.orderContent {
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
+
+hr {
+  margin-left: 1vw;
+  margin-right: 1vw;
+}

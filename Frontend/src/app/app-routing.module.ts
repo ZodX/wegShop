@@ -12,7 +12,6 @@ import {MyordersComponent} from "./components/order/myorders/myorders.component"
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'main', component: MainComponent },
   { path: 'products', component: ProductsComponent },
   { path: 'add', component: AddComponent },
   { path: 'modify/:id', component: ModifyComponent },
@@ -20,7 +19,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent},
   { path: 'thank', component: ThankyouComponent},
   { path: 'myorders', component: MyordersComponent},
-  { path: '**', redirectTo: 'main' }
+  { path: '**', redirectTo: 'products' }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -31,7 +31,7 @@ public class DBInit implements CommandLineRunner {
 
         User user = new User();
         user.setUserame("admin");
-        user.setPassword(passwordEncoder.encode("secret"));
+        user.setPassword(passwordEncoder.encode("admin"));
         user.setRole("ROLE_ADMIN");
         user.setOrder_counter(0L);
         this.userRepository.save(user);
@@ -50,13 +50,18 @@ public class DBInit implements CommandLineRunner {
         user3.setOrder_counter(0L);
         this.userRepository.save(user3);
 
-        for (int i = 0; i < 20; i++) {
-            Product product = new Product();
-            product.setName("Kenyer");
-            product.setDescription("Edd meg");
-            product.setPrice(100L);
-            product.setQuantity(20L);
-            this.productRepository.save(product);
-        }
+        Product product = new Product();
+        product.setName("Bread");
+        product.setDescription("500g");
+        product.setPrice(2L);
+        product.setQuantity(20L);
+        this.productRepository.save(product);
+
+        Product product2 = new Product();
+        product2.setName("Pencil");
+        product2.setDescription("A very useful tool to write things down on a paper.");
+        product2.setPrice(4L);
+        product2.setQuantity(20L);
+        this.productRepository.save(product2);
     }
 }

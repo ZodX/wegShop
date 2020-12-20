@@ -71,12 +71,12 @@ export class CartholderComponent implements OnInit {
         order.product_id = item.product_id;
         order.username = item.username;
 
-        this.cartOrderService.addOrder(order).subscribe();
+        this.cartOrderService.addOrder(order).subscribe(() => {
+          this.cartOrderService.incOrderNumber(user).subscribe( () => {
+            this.router.navigate(['/thank']);
+          });
+        });
       }
-
-      this.cartOrderService.incOrderNumber(user).subscribe();
-
-      this.router.navigate(['/thank']);
     });
   }
 

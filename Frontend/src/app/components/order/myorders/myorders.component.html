@@ -6,105 +6,17 @@
     </div>
     <hr>
     <div class="ordersContainer">
-      <div class="order">
-        <div class="orderTitle my-flex">
-          <h3>Order #1</h3>
+      <div *ngFor="let item of [].constructor(orderCount); let i = index">
+        <div class="order">
+          <div class="orderTitle my-flex">
+          <h3>Order {{ i + 1 }}</h3>
         </div>
-        <div class="orderContent">
-          <p><b>Product:</b> productname</p>
-          <p><b>Product:</b> productname</p>
-          <p><b>Product:</b> productname</p>
+          <div class="orderContent">
+            <p *ngFor="let product of orderProducts[i]" ><b>Product:</b> {{ product.name }}</p>
+          </div>
         </div>
+        <hr>
       </div>
-      <hr>
-      <div class="order">
-        <div class="orderTitle my-flex">
-          <h3>Order #1</h3>
-        </div>
-        <div class="orderContent">
-          <p><b>Product:</b> productname</p>
-          <p><b>Product:</b> productname</p>
-          <p><b>Product:</b> productname</p>
-        </div>
-      </div>
-      <hr>
-      <div class="order">
-        <div class="orderTitle my-flex">
-          <h3>Order #1</h3>
-        </div>
-        <div class="orderContent">
-          <p><b>Product:</b> productname</p>
-          <p><b>Product:</b> productname</p>
-          <p><b>Product:</b> productname</p>
-        </div>
-      </div>
-      <hr>
-      <div class="order">
-        <div class="orderTitle my-flex">
-          <h3>Order #1</h3>
-        </div>
-        <div class="orderContent">
-          <p><b>Product:</b> productname</p>
-          <p><b>Product:</b> productname</p>
-          <p><b>Product:</b> productname</p>
-        </div>
-      </div>
-      <hr>
-      <div class="order">
-        <div class="orderTitle my-flex">
-          <h3>Order #1</h3>
-        </div>
-        <div class="orderContent">
-          <p><b>Product:</b> productname</p>
-          <p><b>Product:</b> productname</p>
-          <p><b>Product:</b> productname</p>
-        </div>
-      </div>
-      <hr>
-      <div class="order">
-        <div class="orderTitle my-flex">
-          <h3>Order #1</h3>
-        </div>
-        <div class="orderContent">
-          <p><b>Product:</b> productname</p>
-          <p><b>Product:</b> productname</p>
-          <p><b>Product:</b> productname</p>
-        </div>
-      </div>
-      <hr>
-      <div class="order">
-        <div class="orderTitle my-flex">
-          <h3>Order #1</h3>
-        </div>
-        <div class="orderContent">
-          <p><b>Product:</b> productname</p>
-          <p><b>Product:</b> productname</p>
-          <p><b>Product:</b> productname</p>
-        </div>
-      </div>
-      <hr>
-      <div class="order">
-        <div class="orderTitle my-flex">
-          <h3>Order #1</h3>
-        </div>
-        <div class="orderContent">
-          <p><b>Product:</b> productname</p>
-          <p><b>Product:</b> productname</p>
-          <p><b>Product:</b> productname</p>
-        </div>
-      </div>
-      <hr>
-      <div class="order">
-        <div class="orderTitle my-flex">
-          <h3>Order #1</h3>
-        </div>
-        <div class="orderContent">
-          <p><b>Product:</b> productname</p>
-          <p><b>Product:</b> productname</p>
-          <p><b>Product:</b> productname</p>
-        </div>
-      </div>
-      <hr>
     </div>
   </div>
 </div>

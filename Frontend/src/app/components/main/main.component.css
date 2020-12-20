@@ -1,0 +1,7 @@
+.holder {
+    height: 93vh;
+    border: thin solid red;
+    background-size: cover;
+    background-position: center;
+    background-image: url('src/assets/img/mainbg.jpg');
+}

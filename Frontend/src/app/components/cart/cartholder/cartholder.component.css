@@ -76,7 +76,7 @@ h1 {
 }
 
 .orderContainer {
-    width: 70%;
+    width: 40%;
     height: 100%;
     display: flex;
     align-items: center;
@@ -87,7 +87,7 @@ h1 {
     border: 5px solid #0d6efd;
     border-radius: 1em;
     height: 90%;
-    width: 30%;
+    width: 70%;
     margin-left: 2vw;
     font-size: 1.5vw;
     transition: .3s;
@@ -96,6 +96,19 @@ h1 {
 .orderContainer button:hover {
     background-color: #0d6efd;
     color: white;
+}
+
+.processContainer {
+    height: 100%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.processContainer p {
+    margin: 0;
+    padding: 0;
 }
 
 .totalPriceContainer {

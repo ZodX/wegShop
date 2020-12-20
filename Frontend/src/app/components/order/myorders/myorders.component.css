@@ -1,5 +1,6 @@
 .holder {
   background-color: lightgrey;
+  min-height: 93vh;
 }
 
 .myContainer {

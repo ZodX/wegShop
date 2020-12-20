@@ -9,10 +9,10 @@
       <div *ngFor="let item of [].constructor(orderCount); let i = index">
         <div class="order">
           <div class="orderTitle my-flex">
-          <h3>Order {{ i + 1 }}</h3>
-        </div>
+            <h3>Order {{ i + 1 }}</h3>
+          </div>
           <div class="orderContent">
-            <p *ngFor="let product of orderProducts[i]" ><b>Product:</b> {{ product.name }}</p>
+            <p *ngFor="let product of orderProducts[i]"><b>Product:</b> {{ product.name }}</p>
           </div>
         </div>
         <hr>

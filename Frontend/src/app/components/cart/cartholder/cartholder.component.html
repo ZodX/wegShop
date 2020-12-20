@@ -24,6 +24,9 @@
                 <div class="orderContainer">
                     <button (click)="handleOrderNow()" *ngIf="cartItems.length > 0">Order now</button>
                 </div>
+                <div class="processContainer">
+                    <p *ngIf="isProcessing"><b>Processing your order...</b></p>
+                </div>
                 <div *ngIf="fetchDone" class="totalPriceContainer my-flex">
                     <p id="priceText">Total: </p>
                     <p id="priceNumber">{{ totalprice }}$</p>

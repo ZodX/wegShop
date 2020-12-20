@@ -21,6 +21,7 @@ export class CartholderComponent implements OnInit {
   fetchDone: boolean;
   username: string;
   orderCount: ArrayBuffer;
+  isProcessing: boolean;
 
   constructor(
     private cartSercice: CartService,
@@ -60,10 +61,11 @@ export class CartholderComponent implements OnInit {
     let user = new User();
     user.username = this.username;
 
-    this.cartOrderService.getUserOrderCount(user).subscribe( (result) => {
+    this.cartOrderService.getUserOrderCount(user).subscribe(async (result) => {
       this.orderCount = result + 1;
       console.log(this.orderCount);
       user.order_counter = this.orderCount;
+      this.isProcessing = true;
 
       for (let item of this.cartItems) {
         let order = new Order();
@@ -73,11 +75,16 @@ export class CartholderComponent implements OnInit {
 
         this.cartOrderService.addOrder(order).subscribe(() => {
           this.cartOrderService.incOrderNumber(user).subscribe( () => {
-            this.router.navigate(['/thank']);
           });
         });
+        await this.delay(100);
       }
+      this.router.navigate(['/thank']);
     });
+  }
+
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
   }
 
 }
